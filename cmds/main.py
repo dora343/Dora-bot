@@ -914,8 +914,8 @@ class Main(Cog_Extension):
         
 
         msg = msg + '<:threestar:986646189179039755> ' + \
-                str(SSR_amount) + '張，其中有' + str(amount) + \
-                '張' + ' <:umapickup:986648647678713996> + '+ str(amount) + '張 <:umapickup:986648647678713996>\n'
+                str(SSR_amount) + '張，其中有' + str(A_acquired) + \
+                '張' + ' <:umapickup:986648647678713996> + '+ str(B_acquired) + '張 <:umapickup:986648647678713996>\n'
 
         msg = msg + '<:twostar:986646154034962513> ' + \
             str(SR_amount) + '張\n'
