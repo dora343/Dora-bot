@@ -33,33 +33,36 @@ class Autoreact(Cog_Extension):
                 await msg.channel.send(f'<@{jdata["Dora_id"]}>')
 
             if (keyword4 in msg.content or keyword5 in msg.content) and msg.author != self.bot.user and msg.author.id != 400941378395439104:
-                await msg.channel.send('屌你老母tag乜撚嘢啊 仆你個街食屎狗==')
-                await msg.channel.send('咁鍾意tag人我成全你')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
+                await msg.reply(
+                    '屌你老母tag乜撚嘢啊 仆你個街食屎狗==\n' + \
+                    '咁鍾意tag人我成全你\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n')
 
             if (keyword4 in msg.content or keyword5 in msg.content) and msg.author != self.bot.user and msg.author.id == 400941378395439104:
                 await msg.channel.send('<@400941378395439104> 💖💖💖')
 
             if keyword6 in msg.content and msg.author != self.bot.user and not msg.author.guild_permissions.administrator:
-                await msg.channel.send('屌你老母tag乜撚嘢啊 仆你個街食屎狗==')
-                await msg.channel.send('咁鍾意tag人我成全你')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
+                await msg.reply(
+                    '屌你老母tag乜撚嘢啊 仆你個街食屎狗==\n' + \
+                    '咁鍾意tag人我成全你\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n')
 
             if keyword7 in msg.content and msg.author != self.bot.user and not msg.author.guild_permissions.administrator:
-                await msg.channel.send('屌你老母tag乜撚嘢啊 仆你個街食屎狗==')
-                await msg.channel.send('咁鍾意tag人我成全你')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
-                await msg.channel.send(f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>')
+                await msg.reply(
+                    '屌你老母tag乜撚嘢啊 仆你個街食屎狗==\n' + \
+                    '咁鍾意tag人我成全你\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n' + \
+                    f'<@{msg.author.id}><@{msg.author.id}><@{msg.author.id}>\n')
 
-            if msg.content == keyword10 and msg.author != self.bot.user:
+            if msg.content == keyword10 and msg.author != self.bot.user and msg.author.id == 400941378395439104:
                 await msg.channel.send('<@445943313384865813>')
 
-            if msg.content == keyword11 and msg.author != self.bot.user:
+            if msg.content == keyword11 and msg.author != self.bot.user and msg.author.id == 400941378395439104:
                 await msg.channel.send('<@242543304418394124>')
 
         # await self.bot.process_commands(msg)

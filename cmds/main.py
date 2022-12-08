@@ -345,6 +345,73 @@ class Main(Cog_Extension):
 
 
     @commands.command()
+    async def a(self, ctx, num):
+
+        # Returns sum of all factors of n.
+        def sumofFactors(n):
+            
+            # Traversing through all
+            # prime factors
+            res = 1
+            for i in range(2, int(math.sqrt(n) + 1)):
+                
+                curr_sum = 1
+                curr_term = 1
+                
+                while n % i == 0:
+                    
+                    n = n / i
+        
+                    curr_term = curr_term * i
+                    curr_sum += curr_term
+                    
+                res = res * curr_sum
+            
+            # This condition is to handle the
+            # case when n is a prime number
+            # greater than 2
+            if n > 2:
+                res = res * (1 + n)
+        
+            return res
+
+        def total_factors(n):
+            count = 0
+            for i in range(1,n+1):
+                if n%i == 0:
+                    count+=1
+            
+            return count
+
+        num = int(num)
+        if num > 999 and ctx.author.id != 400941378395439104:
+            return await ctx.send("on9")
+        
+        total = 0
+        total_i = 0
+        msg = ""
+        for i in range(1,101):
+
+            nnn = 10000 + sumofFactors(i)*total_factors(i)*total_factors(i) 
+            nnn = nnn/100
+
+            nnn = int(round(nnn))
+            total = total + i
+            total_i = total_i + nnn
+            msg = msg + str(nnn) + "\n"
+
+        avg= total_i / 100
+        msg = msg + "avg = " + str(avg)
+
+        await ctx.send(msg)
+
+    
+    @commands.command()
+    async def b(self, ctx):
+
+        await ctx.send('')
+    
+    @commands.command()
     async def ping(self, ctx):
         temp=F'**網絡延遲: {round(self.bot.latency*1000)} ms**'
         await ctx.message.reply('**Pong!**\n'+temp)
@@ -386,7 +453,11 @@ class Main(Cog_Extension):
         await ctx.message.reply(f'**補償秒數：{remain}秒**')
 
 
-
+    @commands.command()
+    async def trial(self,ctx):
+        a=1500000020
+        b= math.ceil(a / 5000)
+        await ctx.message.reply(b)
 
 
     @commands.command()
@@ -674,15 +745,23 @@ class Main(Cog_Extension):
 
     @commands.command(name='umahorsepool',aliases=['k'])
     async def umamusume_draw_horse_pool(self,ctx,amounts: t.Optional[str]):
+
+        role = discord.utils.get(ctx.guild.roles, name="神隱")
+
         if not amounts:
             amount = 1
         else:
             amount = int(amounts)
-            if amount > 21313 and ctx.author.id != 400941378395439104:
+            if amount > 8964 and ctx.author.id != 400941378395439104 and role in ctx.message.author.roles:
                 amount *= 6
                 amount *= 5000
-                return await ctx.message.reply('屌你老母咪叫我抽咁撚多隻<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n你肯課' + str(amount) + '粒<:umajewel:986644206158229554>我就抽')
-        
+                return await ctx.message.reply('屌你老母咪叫我抽咁撚多張<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n你肯課' + str(amount) + '粒<:umajewel:986644206158229554>我就抽')
+
+            if amount > 999 and ctx.author.id != 400941378395439104 and not(role in ctx.message.author.roles):
+                amount *= 6
+                amount *= 5000
+                return await ctx.message.reply('屌你老母咪叫我抽咁撚多張<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n你肯課' + str(amount) + '粒<:umajewel:986644206158229554>我就抽')
+
         
         SSR = 0.03
         SR = 0.18
@@ -761,15 +840,23 @@ class Main(Cog_Extension):
 
     @commands.command(name='umasupportpool-sr',aliases=['sr'])
     async def umamusume_draw_support_pool_sr_mode(self,ctx,amounts: t.Optional[str]):
+
+        role = discord.utils.get(ctx.guild.roles, name="神隱")
+
         if not amounts:
             amount = 5
         else:
             amount = int(amounts)
-            if amount > 21313 and ctx.author.id != 400941378395439104:
+            if amount > 8964 and ctx.author.id != 400941378395439104 and role in ctx.message.author.roles:
                 amount *= 6
                 amount *= 5000
-                return await ctx.message.reply('屌你老母咪叫我抽咁撚多張<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n你肯課 ' + str(amount) + '粒<:umajewel:986644206158229554>我就抽')
-    
+                return await ctx.message.reply('on9?')
+
+            if amount > 999 and ctx.author.id != 400941378395439104 and not(role in ctx.message.author.roles):
+                amount *= 6
+                amount *= 5000
+                return await ctx.message.reply('on9?')
+
         
         SSR = 0.03
         SR = 0.18
@@ -812,7 +899,10 @@ class Main(Cog_Extension):
             str(counter) + f'**抽才抽到 **{amount}** 張** PICKUP 支援卡 ({round(100*pool_up,2)}%)**\n\n'
 
         msg = '**[SR模式]**\n' + msg
-        msg = msg + '花費了**'+str(counter*150)+'**個 <:umajewel:986644206158229554>\n\n'
+        daan_amount = math.ceil(counter * 150 / 5000)
+        hkd_total = 488*daan_amount
+
+        msg = msg + '花費了**'+str(counter*150)+'**個 <:umajewel:986644206158229554>\n' + '('+ str(daan_amount) +'單，HKD$488 * '+ str(daan_amount) +' = **HKD$' + str(hkd_total) + '**)\n\n'
         
 
         
@@ -821,8 +911,9 @@ class Main(Cog_Extension):
             str(SSR_amount) + '張\n'
 
         msg = msg + '<:twostar:986646154034962513> ' + \
-                str(SR_amount) + '張，其中有' + str(amount) + \
-                '張' + ' <:umasrpickup:993754852662464532>\n'
+                str(SR_amount) + '張，其中有:\n\n--> ' + str(amount) +\
+                ' 張 **PICKUP 支援卡**\n\n'
+
 
         msg = msg + '<:onestar:986646095432130580> ' + \
             str(R_amount) + '張\n\n'
@@ -835,6 +926,7 @@ class Main(Cog_Extension):
         amounts = 5
 
         if not amounts:
+            amounts = '5'
             amount = 5
         else:
             amount = int(amounts)
@@ -910,12 +1002,15 @@ class Main(Cog_Extension):
             msg = '**'+ctx.author.name + '** 花了**' + \
                 str(counter) + f'**抽才把 **2 種 PICKUP 支援卡 ({round(100*pool_up_A,2)}%)** 抽到滿凸\n\n'
 
-        msg = msg + '花費了**'+str(counter*150)+'**個 <:umajewel:986644206158229554>\n\n'
+        daan_amount = math.ceil(counter * 150 / 5000)
+        hkd_total = 488*daan_amount
+
+        msg = msg + '花費了**'+str(counter*150)+'**個 <:umajewel:986644206158229554>\n' + '('+ str(daan_amount) +'單，HKD$488 * '+ str(daan_amount) +' = **HKD$' + str(hkd_total) + '**)\n\n'
         
 
         msg = msg + '<:threestar:986646189179039755> ' + \
-                str(SSR_amount) + '張，其中有' + str(A_acquired) + \
-                '張' + ' <:umapickup:986648647678713996> + '+ str(B_acquired) + '張 <:umapickup:986648647678713996>\n'
+                str(SSR_amount) + '張，其中有： \n\n' + '--> ' +str(A_acquired) + ' + ' + str(max(5-A_acquired,0)) +\
+                ' 張' + ' **PICKUP 支援卡 A**\n'+ '--> ' +str(B_acquired) + ' + ' + str(max(5-B_acquired,0)) + ' 張 **PICKUP 支援卡 B**\n\n'
 
         msg = msg + '<:twostar:986646154034962513> ' + \
             str(SR_amount) + '張\n'
@@ -930,16 +1025,38 @@ class Main(Cog_Extension):
 
     @commands.command(name='umasupportpool',aliases=['ssr'])
     async def umamusume_draw_support_pool(self,ctx,amounts: t.Optional[str]):
+
+        role = discord.utils.get(ctx.guild.roles, name="神隱")
         
         if not amounts:
             amount = 5
+            amounts = '5'
+            maximum_draw = amount*200
         else:
+            maximum_draw = int(amounts)*200
             amount = int(amounts)
-            if amount > 21313 and ctx.author.id != 400941378395439104:
+            if amount > 8964 and ctx.author.id != 400941378395439104 and role in ctx.message.author.roles:
                 amount *= 6
                 amount *= 5000
-                return await ctx.message.reply('屌你老母咪叫我抽咁撚多張<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n你肯課' + str(amount) + '粒<:umajewel:986644206158229554>我就抽')
-        
+                daan_amount = math.ceil(amount / 5000)
+                hkd_total = 488*daan_amount
+                return await ctx.message.reply(\
+                    '屌你老母咪叫我抽咁撚多張<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n' +\
+                    '你肯課' + str(amount) + '粒<:umajewel:986644206158229554>我就抽\n'+\
+                    '('+ str(daan_amount) +'單，HKD$488 * '+ str(daan_amount) +' = **HKD$' + str(hkd_total) + '**)'\
+                )
+
+            if amount > 999 and ctx.author.id != 400941378395439104 and not(role in ctx.message.author.roles):
+                amount *= 6
+                amount *= 5000
+                daan_amount = math.ceil(amount / 5000)
+                hkd_total = 488*daan_amount
+                return await ctx.message.reply(\
+                    '屌你老母咪叫我抽咁撚多張<:chick:786220756102545409><:chick:786220756102545409><:chick:786220756102545409>\n' +\
+                    '你肯課' + str(amount) + '粒<:umajewel:986644206158229554>我就抽\n'+\
+                    '('+ str(daan_amount) +'單，HKD$488 * '+ str(daan_amount) +' = **HKD$' + str(hkd_total) + '**)'\
+                )
+
         SSR = 0.03
         SR = 0.18
         R = 1-SR-SSR
@@ -954,9 +1071,11 @@ class Main(Cog_Extension):
         SR_amount = 0
         SSR_amount = 0
 
-        maximum_draw = amount*200
+        #maximum_draw = int(amounts)*200
 
-        current_acquired = 0
+        A_acquired = 0
+
+        exchange = 0
 
         check = False
 
@@ -966,7 +1085,7 @@ class Main(Cog_Extension):
             result = random.randrange(1,10001) 
             if result in range(1,pool_up_cutoff+1):
                 SSR_amount += 1
-                current_acquired += 1
+                A_acquired += 1
             if result in range(pool_up_cutoff+1,SSR_cutoff+1):
                 SSR_amount += 1
             if result in range(SSR_cutoff+1,SR_cutoff+1):
@@ -978,11 +1097,13 @@ class Main(Cog_Extension):
 
             #200PT
             if counter % 200 == 0:
-                current_acquired += 1  
+                exchange += 1  
                 SSR_amount +=1
 
             #Check finish
-            if current_acquired == amount:
+
+            remaining_cards = max(int(amounts)-A_acquired,0)
+            if remaining_cards == exchange:
                 break
 
         if counter == maximum_draw:
@@ -996,12 +1117,17 @@ class Main(Cog_Extension):
             msg = '**'+ctx.author.name + '** 花了**' + \
                 str(counter) + f'**抽才抽到 **{amount}** 張** PICKUP 支援卡 ({round(100*pool_up,2)}%)**\n\n'
 
-        msg = msg + '花費了**'+str(counter*150)+'**個 <:umajewel:986644206158229554>\n\n'
+
+         
+        daan_amount = math.ceil(counter * 150 / 5000)
+        hkd_total = 488*daan_amount
+
+        msg = msg + '花費了**'+str(counter*150)+'**個 <:umajewel:986644206158229554>\n' + '('+ str(daan_amount) +'單，HKD$488 * '+ str(daan_amount) +' = **HKD$' + str(hkd_total) + '**)\n\n'
         
 
         msg = msg + '<:threestar:986646189179039755> ' + \
-                str(SSR_amount) + '張，其中有' + str(amount) + \
-                '張' + ' <:umapickup:986648647678713996>\n'
+                str(SSR_amount) + '張，其中有:\n\n--> ' + str(A_acquired) + ' + ' + str(exchange) +\
+                ' 張 **PICKUP 支援卡**\n\n'
 
         msg = msg + '<:twostar:986646154034962513> ' + \
             str(SR_amount) + '張\n'
@@ -1190,7 +1316,7 @@ class Main(Cog_Extension):
             number = int(number)
             if number <= 0:
                 return await ctx.send('無效的輸入數值')
-            if number > 100000 and ctx.author.id != 400941378395439104:
+            if number > 8964 and ctx.author.id != 400941378395439104:
                 return await ctx.send('為什麼要欺負我<:rushia_cry:840144461870923777> <:rushia_cry:840144461870923777> <:rushia_cry:840144461870923777>')
             tens = math.floor(number/10)
             # await ctx.send(tens)
@@ -1324,7 +1450,7 @@ class Main(Cog_Extension):
             number = int(number)
             if number <= 0:
                 return await ctx.send('無效的輸入數值')
-            if number > 100000 and ctx.author.id != 400941378395439104:
+            if number > 8964 and ctx.author.id != 400941378395439104:
                 return await ctx.send('為什麼要欺負我<:rushia_cry:840144461870923777> <:rushia_cry:840144461870923777> <:rushia_cry:840144461870923777>')
             tens = math.floor(number/10)
             # await ctx.send(tens)
