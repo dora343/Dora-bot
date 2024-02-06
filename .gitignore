@@ -3,3 +3,4 @@ settings.json
 # ignore all pycache
 **/__pycache__
 .vscode/
+.vscode/launch.json
