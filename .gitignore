@@ -1,1 +1,5 @@
+# prevent exposing bot token
 settings.json
+# ignore all pycache
+**/__pycache__
+.vscode/

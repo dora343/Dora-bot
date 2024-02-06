@@ -512,6 +512,8 @@ class Main(Cog_Extension):
             tr = re.match(r"\s*\.shift\s*(\d+)\s*\n([\s\S]+)", message2)
             if tr:
                 time = int(tr.group(1))
+                if time > 100:
+                    time = time-40
                 if 1 <= time <= 90:
                     lines = tr.group(2).split("\n")
                     resultline = ""

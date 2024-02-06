@@ -24,11 +24,16 @@ async def on_ready():
 
 @bot.command(name='load', aliases=['l'])
 async def module_load(ctx, module):
+    if (ctx.author.id != jdata["Dora_id"]): 
+        await ctx.send('你沒有足夠權限使用此指令')
+        return
+
     if module == 'all' or module == 'a':
         for filename in os.listdir('./cmds'):
             if filename.endswith('.py'):
                 x = filename[:-3]
                 bot.load_extension(f'cmds.{x}')
+        print("已載入所有模組。")
         await ctx.send('已載入所有模組。')
     bot.load_extension(f'cmds.{module}')
     await ctx.send(F'已載入 **{module}** 模組。')
@@ -38,6 +43,10 @@ async def module_load(ctx, module):
 
 @bot.command(name='unload')
 async def module_unload(ctx, module):
+    if (ctx.author.id != jdata["Dora_id"]): 
+        await ctx.send('你沒有足夠權限使用此指令')
+        return
+
     if module == 'all' or module == 'a':
         for filename in os.listdir('./cmds'):
             if filename.endswith('.py'):
@@ -52,11 +61,16 @@ async def module_unload(ctx, module):
 
 @bot.command(name='reload', aliases=['r'])
 async def module_reload(ctx, module):
+    if (ctx.author.id != jdata["Dora_id"]): 
+        await ctx.send('你沒有足夠權限使用此指令')
+        return
+    
     if module == 'all' or module == 'a':
         for filename in os.listdir('./cmds'):
             if filename.endswith('.py'):
                 x = filename[:-3]
                 bot.reload_extension(f'cmds.{x}')
+        print("已重新載入所有模組。")
         await ctx.send('已重新載入所有模組。')
     else:
         bot.reload_extension(f'cmds.{module}')
@@ -71,6 +85,10 @@ for filename in os.listdir('./cmds'):
 
 @bot.command()
 async def listallmodules(ctx):
+    if (ctx.author.id != jdata["Dora_id"]): 
+        await ctx.send('你沒有足夠權限使用此指令')
+        return
+
     x = ''
     for filename in os.listdir('./cmds'):
         if filename.endswith('.py'):
@@ -80,6 +98,11 @@ async def listallmodules(ctx):
 
 @bot.command()
 async def help(ctx, input: t.Optional[str]):
+    
+    await ctx.send('wip')
+    return
+
+    
     page = []
     num_of_pages = 2
     for i in range(num_of_pages):
