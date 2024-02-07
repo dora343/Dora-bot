@@ -1,6 +1,7 @@
 # ignore all pycache
 **/__pycache__
 .vscode/
+.idea/
 settings.json
 cmds/minigame-data.json
 venv/
