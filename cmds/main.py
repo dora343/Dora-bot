@@ -407,9 +407,9 @@ class Main(Cog_Extension):
 
     
     @commands.command()
-    async def echo(self, ctx, string):
+    async def echo(self, ctx, arg1, arg2, arg3):
         
-        await ctx.send(string)
+        await ctx.send(arg1 + ' ' + arg2 + ' ' + arg3)
     
     @commands.command()
     async def ping(self, ctx):
