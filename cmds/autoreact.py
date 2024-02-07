@@ -13,8 +13,7 @@ class Autoreact(Cog_Extension):
     async def on_message(self, msg):
          
 
-            keyword1 = '<:chick:786220756102545409>'
-            keyword2 = 'rushia'
+            
             keyword3 = 'dora'
             keyword4 = '<@!838746426259406918>'
             keyword5 = '<@838746426259406918>'
@@ -23,14 +22,10 @@ class Autoreact(Cog_Extension):
             keyword10 = '燿'
             keyword11 = '楓'
 
-            if msg.content == keyword1 and msg.author != self.bot.user:
-                pass
 
-            if msg.content == keyword2 and msg.author != self.bot.user:
-                await msg.channel.send(jdata['rushia_live2d'])
 
             if msg.content == keyword3 and msg.author != self.bot.user:
-                await msg.channel.send(f'<@{jdata["Dora_id"]}>')
+                await msg.channel.send(f'<@{jdata["Owner_id"]}>')
 
             if (keyword4 in msg.content or keyword5 in msg.content) and msg.author != self.bot.user and msg.author.id != 400941378395439104:
                 await msg.reply(
