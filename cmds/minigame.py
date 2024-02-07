@@ -124,7 +124,7 @@ class Minigame(MinigameBackend):
     async def resurrectCommand(self, ctx):
         status = self.resurrect(ctx.author.id)
         await self.handleError(ctx, status[0])
-        if (status[0] != self.OK_STATUS): return
+        if (status[0] != self._OK_STATUS): return
         resurrect_token = status[1]
         await ctx.message.reply(F'You have resurrected. Added {resurrect_token} tokens to your account.')
 
