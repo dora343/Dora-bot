@@ -1,4 +1,6 @@
 @REM This .bat script is for WINDOWS only. Python 3.9.x installed with py launcher enabled.
+git update-index --skip-worktree settings.json
+git update-index --skip-worktree cmds/minigame-data.json
 py -3.9 -m ensurepip --upgrade
 py -3.9 -m pip install pip -U
 py -3.9 -m pip install -r .\requirements.txt
