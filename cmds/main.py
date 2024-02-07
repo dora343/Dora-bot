@@ -407,9 +407,18 @@ class Main(Cog_Extension):
 
     
     @commands.command()
-    async def echo(self, ctx, arg1, arg2):
-        
-        await ctx.send(arg1 + ' ' + arg2)
+    async def echo(self, ctx, arg1, arg2:t.Optional[str], arg3:t.Optional[str]):
+        if (not arg2) and (not arg3):
+
+            await ctx.send(arg1)
+            return
+
+        if (not arg3):
+
+            await ctx.send(arg1 + ' ' + arg2)
+            return    
+
+        await ctx.send(arg1 + ' ' + arg2 + ' ' + arg3)
     
     @commands.command()
     async def ping(self, ctx):
