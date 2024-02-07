@@ -175,7 +175,7 @@ class MinigameBackend(Cog_Extension):
 
     def resurrect(self, targetid):
         if (self.isValidPlayer(str(targetid)) != self._OK_STATUS):
-            return self._PLAYER_NOT_FOUND_ERROR
+            return self._PLAYER_NOT_FOUND_ERROR, 0
             
         status = self.getToken(targetid)
 
