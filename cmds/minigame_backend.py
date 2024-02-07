@@ -155,7 +155,7 @@ class MinigameBackend(Cog_Extension):
         if (amount > int(currency)):
             return self._INSUFFICIENT_TOKEN_ERROR, 0
 
-        odds = 0.6 * 1000
+        odds = 0.5 * 1000
 
         temp = random.randrange(1, 1000)
         
