@@ -3,7 +3,12 @@ from discord.ext import commands
 import typing as t
 import json
 import random
+import platform
+import asyncio
 import os
+if platform.system()=='Windows':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 
 with open('settings.json', 'r', encoding='utf8') as jfile:
     jdata = json.load(jfile)
@@ -18,6 +23,14 @@ bot.remove_command('help')
 async def on_ready():
     print("機器人已上線。")
     await bot.change_presence(activity=discord.Game(name="指令請用[.]"))
+
+@bot.command(name='shutdown')
+@commands.is_owner()
+async def shutdown(ctx):
+    print("機器人已下線。")
+    await ctx.send("898")
+    await bot.close()
+    exit()
 
 # 啟用指定模組
 
