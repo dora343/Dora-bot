@@ -3,3 +3,4 @@
 .vscode/
 settings.json
 cmds/minigame-data.json
+venv/
