@@ -58,69 +58,7 @@ class Voice(Cog_Extension):
             else:
                 await ctx.send('你沒有足夠權限使用此指令。')
     
-    """
-    @commands.command(name="play", aliases=["stream"])
-    async def play_music_command(self, ctx, url: str):
-
-        if ctx.voice_client == None:
-            author = ctx.message.author
-            voice_channel = author.voice.channel
-            await voice_channel.connect()
-
-        song_there = os.path.isfile("song.mp3")
-        try:
-            if song_there:
-                os.remove("song.mp3")
-        except PermissionError:
-            await ctx.send("請靜待音樂播放完畢或使用[.stop]停止播放音樂。")
-            return
-
-        ydl_opts = {
-            'format': 'bestaudio/best',
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '128',
-            }],
-        }
-
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            ydl.download([url])
-        for file in os.listdir("./"):
-            if file.endswith(".mp3"):
-                for i in range(len(file)):
-                    if file[len(file)-1-i] == '-':
-                        location = len(file)-1-i
-                        break
-
-                songname = file[0:location]
-                os.rename(file, "song.mp3")
-
-        ctx.voice_client.play(discord.FFmpegPCMAudio("song.mp3"))
-        await ctx.send('正在播放 `' + songname + '`。')
-
-    @commands.command(name="resume")
-    async def resume_command(self, ctx):
-        if ctx.voice_client.is_paused():
-            ctx.voice_client.resume()
-            await ctx.send("音樂已恢復播放。")
-        else:
-            await ctx.send("音樂沒有被暫停。")
-
-    @commands.command(name="pause")
-    async def pause_command(self, ctx):
-        if ctx.voice_client.is_playing():
-            ctx.voice_client.pause()
-            await ctx.send("音樂已暫停播放。")
-        else:
-            await ctx.send("現時沒有播放任何音樂。")
-
-    @commands.command(name="nowplaying", aliases=['np'])
-    async def nowplaying_command(self, ctx):
-        await ctx.send('`'+songname+'`')
-
-        
-    """
+    
 
     @commands.command(name="stop")
     async def stop_command(self, ctx):

@@ -407,11 +407,18 @@ class Main(Cog_Extension):
 
     
     @commands.command()
-    async def b(self, ctx, num):
-        num = int(num)
-        array = [100, 100, 100, 101, 100, 102, 100, 102, 101, 103, 100, 110, 101, 104, 104, 108, 101, 114, 101, 115, 105, 106, 101, 138, 103, 107, 106, 120, 101, 146, 101, 123, 108, 109, 108, 174, 102, 110, 109, 158, 102, 161, 102, 130, 128, 112, 102, 224, 105, 133, 112, 135, 102, 177, 112, 177, 113, 114, 102, 342, 102, 115, 137, 162, 113, 192, 103, 145, 115, 192, 103, 381, 103, 118, 145, 150, 115, 208, 103, 286, 130, 120, 103, 423, 117, 121, 119, 215, 104, 437, 118, 160, 120, 123, 119, 463, 104, 162, 156, 276]
+    async def echo(self, ctx, arg1, arg2:t.Optional[str], arg3:t.Optional[str]):
+        if (not arg2) and (not arg3):
 
-        await ctx.send(str(array[num]))
+            await ctx.send(arg1)
+            return
+
+        if (not arg3):
+
+            await ctx.send(arg1 + ' ' + arg2)
+            return    
+
+        await ctx.send(arg1 + ' ' + arg2 + ' ' + arg3)
     
     @commands.command()
     async def ping(self, ctx):

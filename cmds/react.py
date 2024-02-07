@@ -293,29 +293,13 @@ with open('settings.json', 'r', encoding='utf8') as jfile:
     
 class React(Cog_Extension):
     counter = 0
-    @commands.command()
-    async def illuminati(self, ctx):
-        pic = discord.File(jdata['illuminati_pic'])
-        await ctx.send(file=pic)
 
-    @commands.command()
-    async def rickroll(self, ctx):
-        await ctx.send(jdata['never_gonna_give_you_up'])
-
-    @commands.command()
-    async def everyone(self, ctx):
-        if ctx.author.guild_permissions.administrator:
-            await ctx.send('@everyone')
-        else:
-            await ctx.send('You do not have the permission to do so.')
 
     @commands.command()
     async def picamount(self, ctx):
         
         await ctx.message.reply(len(album))
 
-
-    
     #     i = random.randrange(0, len(album)-1)
     #     await ctx.send(album[i])
     

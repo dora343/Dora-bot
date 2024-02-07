@@ -3,12 +3,17 @@ from discord.ext import commands
 import typing as t
 import json
 import random
+import platform
+import asyncio
 import os
+if platform.system()=='Windows':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 
 with open('settings.json', 'r', encoding='utf8') as jfile:
     jdata = json.load(jfile)
 
-bot = commands.Bot(command_prefix='.',intents=discord.Intents.all())
+bot = commands.Bot(command_prefix=jdata['PREFIX'],intents=discord.Intents.all())
 bot.remove_command('help')
 
 # 測試機器人是否在線上
@@ -19,12 +24,22 @@ async def on_ready():
     print("機器人已上線。")
     await bot.change_presence(activity=discord.Game(name="指令請用[.]"))
 
+@bot.command(name='shutdown')
+async def shutdown(ctx):
+    if (ctx.author.id != int(jdata['Owner_id'])): 
+        await ctx.send('你沒有足夠權限使用此指令')
+        return
+    print("機器人已下線。")
+    await ctx.send("898")
+    await bot.close()
+    exit()
+
 # 啟用指定模組
 
 
 @bot.command(name='load', aliases=['l'])
 async def module_load(ctx, module):
-    if (ctx.author.id != jdata["Dora_id"]): 
+    if (ctx.author.id != int(jdata['Owner_id'])): 
         await ctx.send('你沒有足夠權限使用此指令')
         return
 
@@ -43,7 +58,7 @@ async def module_load(ctx, module):
 
 @bot.command(name='unload')
 async def module_unload(ctx, module):
-    if (ctx.author.id != jdata["Dora_id"]): 
+    if (ctx.author.id != int(jdata['Owner_id'])): 
         await ctx.send('你沒有足夠權限使用此指令')
         return
 
@@ -61,7 +76,7 @@ async def module_unload(ctx, module):
 
 @bot.command(name='reload', aliases=['r'])
 async def module_reload(ctx, module):
-    if (ctx.author.id != jdata["Dora_id"]): 
+    if (ctx.author.id != int(jdata['Owner_id'])): 
         await ctx.send('你沒有足夠權限使用此指令')
         return
     
@@ -85,7 +100,7 @@ for filename in os.listdir('./cmds'):
 
 @bot.command()
 async def listallmodules(ctx):
-    if (ctx.author.id != jdata["Dora_id"]): 
+    if (ctx.author.id != int(jdata['Owner_id'])): 
         await ctx.send('你沒有足夠權限使用此指令')
         return
 
