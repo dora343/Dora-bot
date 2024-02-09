@@ -1,6 +1,5 @@
 @REM This .bat script is for WINDOWS only. Python 3.9.x installed with py launcher enabled.
-git update-index --skip-worktree settings.json
-git update-index --skip-worktree cmds/minigame-data.json
+
 py -3.9 -m venv venv
 call "venv\Scripts\activate.bat"
 
