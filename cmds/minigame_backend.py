@@ -74,9 +74,9 @@ class MinigameBackend(Cog_Extension):
         template_player_profile = {
             'name': name, 
             'status': 'active',
-            'currency': 100,
+            'currency': 10000,
             'resurrection-count': 0,
-            'highest-token': 100
+            'highest-token': 10000
         }
 
         data['players'][str(targetid)] = template_player_profile

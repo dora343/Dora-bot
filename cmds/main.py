@@ -1,6 +1,5 @@
 from multiprocessing import pool
 from this import d
-import turtle
 from types import prepare_class
 import discord
 import scipy 

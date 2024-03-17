@@ -34,7 +34,7 @@ class Minigame(MinigameBackend):
             await ctx.message.reply('You do not have enough tokens.')
             return status
 
-        if (status == self._INSUFFICIENT_TOKEN_ERROR):
+        if (status == self._RESURRECT_WITH_TOKEN_ERROR):
             await ctx.message.reply('You can only resurrect with 0 token.')
             return status
 
